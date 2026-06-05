@@ -1,0 +1,11 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export function DiscountTable({ discounts, selectedId, onSelect, onPublish, onArchive, }) {
+    return (_jsxs("section", { className: "card", children: [_jsx("div", { className: "section-header", children: _jsxs("div", { children: [_jsx("p", { className: "eyebrow", children: "Pipeline" }), _jsx("h2", { children: "Descuentos activos y borradores" })] }) }), _jsx("div", { className: "table-wrap", children: _jsxs("table", { children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("th", { children: "Titulo" }), _jsx("th", { children: "Comuna" }), _jsx("th", { children: "Categoria" }), _jsx("th", { children: "Estado" }), _jsx("th", { children: "Prioridad" }), _jsx("th", { children: "%" }), _jsx("th", {})] }) }), _jsx("tbody", { children: discounts.map((discount) => (_jsxs("tr", { className: selectedId === discount.id ? 'is-selected' : undefined, onClick: () => onSelect(discount), children: [_jsxs("td", { children: [_jsx("strong", { children: discount.title }), _jsx("span", { children: discount.businessName })] }), _jsx("td", { children: discount.comuna }), _jsx("td", { children: discount.category }), _jsx("td", { children: discount.status }), _jsx("td", { children: discount.priority }), _jsxs("td", { children: [discount.percentageOff, "%"] }), _jsx("td", { children: _jsxs("div", { className: "table-actions", children: [discount.status !== 'published' ? (_jsx("button", { type: "button", className: "inline-action", onClick: (event) => {
+                                                        event.stopPropagation();
+                                                        onPublish(discount.id);
+                                                    }, children: "Publicar" })) : null, discount.status !== 'archived' ? (_jsx("button", { type: "button", className: "inline-action inline-action-muted", onClick: (event) => {
+                                                        event.stopPropagation();
+                                                        onArchive(discount.id);
+                                                    }, children: "Archivar" })) : null] }) })] }, discount.id))) })] }) })] }));
+}
+//# sourceMappingURL=DiscountTable.js.map

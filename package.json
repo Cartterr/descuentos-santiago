@@ -1,0 +1,20 @@
+{
+  "name": "descuentos-santiago",
+  "private": true,
+  "version": "1.0.0",
+  "description": "DDD hexagonal platform to manage discounts across Santiago, Chile",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w @descuentos-santiago/api\" \"npm run dev -w @descuentos-santiago/web\"",
+    "build": "npm run build -w @descuentos-santiago/domain && npm run build -w @descuentos-santiago/application && npm run build -w @descuentos-santiago/infrastructure && npm run build -w @descuentos-santiago/api && npm run build -w @descuentos-santiago/web",
+    "lint": "npm run lint -ws --if-present",
+    "check": "npm run build && npm run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "typescript": "^5.9.3"
+  }
+}
